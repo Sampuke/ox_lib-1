@@ -84,6 +84,25 @@ local function formatTags(source, tags)
     return tags
 end
 
+
+if service == 'discord' then
+    local webhook = GetConvar('discord:webhook', '')
+    if webhook == nil then return print("No webhook set in server.cfg") end
+    if webhook ~= '' then
+        function lib.logger(source, event, message, ...)
+            local embed = {
+                    {
+                        ["color"] = '#fff',
+                        ["title"] = "**".. event .."**",
+                        ["description"] = message,
+                    }
+                }
+
+            PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = event, embeds = embed}), { ['Content-Type'] = 'application/json' })
+        end
+    end
+end
+
 if service == 'datadog' then
     local key = GetConvar('datadog:key', ''):gsub("[\'\"]", '')
 
