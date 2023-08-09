@@ -24,9 +24,13 @@ const useStyles = createStyles((theme, params: { disabled?: boolean }) => ({
     whiteSpace: 'pre-wrap',
   },
   button: {
+    borderRadius: "0px",
     height: 'fit-content',
     width: '100%',
     padding: 10,
+    border: "solid rgba(251, 251, 251, 0.76) 1px",
+    // borderRight: "solid white rgba(251, 251, 251, 0.76)",
+    // borderBottom: "solid white rgba(251, 251, 251, 0.76)"
   },
   iconImage: {
     maxWidth: '25px',
@@ -65,6 +69,7 @@ const useStyles = createStyles((theme, params: { disabled?: boolean }) => ({
     alignItems: 'center',
     width: 25,
     height: 25,
+    color: "#3066a0",
   },
 }));
 
@@ -117,7 +122,7 @@ const ContextButton: React.FC<{
                   </Text>
                 )}
                 {button.progress !== undefined && (
-                  <Progress value={button.progress} size="sm" color={button.colorScheme || 'dark.3'} />
+                  <Progress value={button.progress} radius="xs" size="sm" color="#3066a0" />
                 )}
               </Stack>
               {(button.menu || button.arrow) && button.arrow !== false && (

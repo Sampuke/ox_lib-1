@@ -21,11 +21,15 @@ const useStyles = createStyles((theme, params: { position?: TextUiPosition }) =>
     fontSize: 16,
     padding: 12,
     margin: 8,
-    backgroundColor: theme.colors.dark[6],
-    color: theme.colors.dark[0],
+    border: "solid #ffffffad 1px",
+    opacity: "92%",
+    borderRadius: "3px",
+    backgroundColor: "#232324",
+    color: "#ffffffad",
     fontFamily: 'Roboto',
-    borderRadius: theme.radius.sm,
     boxShadow: theme.shadows.sm,
+    fontWeight: 500,
+    fontFamily: 'Kanit',
   },
 }));
 

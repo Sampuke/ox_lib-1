@@ -23,25 +23,33 @@ const useStyles = createStyles((theme) => ({
   header: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 10,
-    gap: 6,
+    // gap: 6,
+    borderTop: "solid white 1px ",
+    borderLeft: "solid white 1px ",
+    borderRight: "solid white 1px ",
   },
   titleContainer: {
-    borderRadius: 4,
-    flex: '1 85%',
+    flex: '1 100%',
+    flexDirection: "row",
+
     backgroundColor: theme.colors.dark[6],
   },
   titleText: {
     color: theme.colors.dark[0],
     padding: 6,
-    textAlign: 'center',
+    textAlign: 'left',
+  },
+  titleBox: {
+    textAlign: 'right',
+    Align: 'right',
   },
   buttonsContainer: {
+    borderRadius: 0,
     height: 560,
     overflowY: 'scroll',
   },
   buttonsFlexWrapper: {
-    gap: 3,
+    gap: 0,
   },
 }));
 
@@ -87,15 +95,16 @@ const ContextMenu: React.FC = () => {
     <Box className={classes.container}>
       <ScaleFade visible={visible}>
         <Flex className={classes.header}>
-          {contextMenu.menu && (
-            <HeaderButton icon="chevron-left" iconSize={16} handleClick={() => openMenu(contextMenu.menu)} />
-          )}
-          <Box className={classes.titleContainer}>
-            <Text className={classes.titleText}>
-              <ReactMarkdown>{contextMenu.title}</ReactMarkdown>
-            </Text>
-          </Box>
-          <HeaderButton icon="xmark" canClose={contextMenu.canClose} iconSize={18} handleClick={closeContext} />
+
+        <Box className={classes.titleContainer}>
+          <Text className={classes.titleText}>
+            <ReactMarkdown>{contextMenu.title}</ReactMarkdown>
+          </Text>
+        </Box>
+        {contextMenu.menu && (
+          <HeaderButton icon="chevron-left" iconSize={16} handleClick={() => openMenu(contextMenu.menu)} />
+        )}
+        <HeaderButton icon="xmark" canClose={contextMenu.canClose} iconSize={18} handleClick={closeContext} />
         </Flex>
         <Box className={classes.buttonsContainer}>
           <Stack className={classes.buttonsFlexWrapper}>
