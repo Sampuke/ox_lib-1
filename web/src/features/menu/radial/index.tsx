@@ -15,29 +15,29 @@ const useStyles = createStyles((theme) => ({
     transform: 'translate(-50%, -50%)',
   },
   sector: {
-    fill: theme.colors.dark[6],
-    color: theme.colors.dark[0],
+    fill: "#17161b",
+    opacity: "0.95",
+    color: "white",
 
     '&:hover': {
-      fill: theme.fn.primaryColor(),
-      '> g > text, > g > svg > path': {
-        fill: '#fff',
-      },
+      fill: "rgba(51, 111, 195, 0.95)",
     },
     '> g > text': {
       fill: theme.colors.dark[0],
     },
   },
   backgroundCircle: {
-    fill: theme.colors.dark[6],
+    fill: "#ffffff00",
+    opacity: 0,
+    // fill: theme.colors.dark[6],
   },
   centerCircle: {
-    fill: theme.fn.primaryColor(),
+    fill: "#2d2d2d",
     color: '#fff',
-    stroke: theme.colors.dark[6],
-    strokeWidth: 4,
+    stroke: "#2d2d2d",
+    strokeWidth: 0,
     '&:hover': {
-      fill: theme.colors[theme.primaryColor][theme.fn.primaryShade() - 1],
+      fill: "rgba(19, 107, 230, 0.95)",
     },
   },
   centerIconContainer: {

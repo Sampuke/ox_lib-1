@@ -20,6 +20,7 @@ const NumberField: React.FC<Props> = (props) => {
 
   return (
     <NumberInput
+    radius="xs"
       value={controller.field.value}
       name={controller.field.name}
       ref={controller.field.ref}

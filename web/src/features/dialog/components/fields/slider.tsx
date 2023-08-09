@@ -21,6 +21,7 @@ const SliderField: React.FC<Props> = (props) => {
       <Text sx={{ fontSize: 14, fontWeight: 500 }}>{props.row.label}</Text>
       <Slider
         mb={10}
+        radius="xs"
         value={controller.field.value}
         name={controller.field.name}
         ref={controller.field.ref}

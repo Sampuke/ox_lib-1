@@ -7,6 +7,9 @@ export const debugInput = () => {
       action: 'openDialog',
       data: {
         heading: 'Police locker',
+        options: {
+          allowCancel: false,
+        },
         rows: [
           {
             type: 'input',

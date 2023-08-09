@@ -21,6 +21,7 @@ const DateField: React.FC<Props> = (props) => {
     <>
       {props.row.type === 'date' && (
         <DatePicker
+        radius="xs"
           value={controller.field.value ? new Date(controller.field.value) : controller.field.value}
           name={controller.field.name}
           ref={controller.field.ref}

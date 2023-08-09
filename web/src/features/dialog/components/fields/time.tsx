@@ -19,6 +19,7 @@ const TimeField: React.FC<Props> = (props) => {
 
   return (
     <TimeInput
+    radius="xs"
       value={controller.field.value ? new Date(controller.field.value) : controller.field.value}
       name={controller.field.name}
       ref={controller.field.ref}

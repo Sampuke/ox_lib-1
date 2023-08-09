@@ -20,6 +20,7 @@ const ColorField: React.FC<Props> = (props) => {
 
   return (
     <ColorInput
+    radius="xs"
       withEyeDropper={false}
       value={controller.field.value}
       name={controller.field.name}

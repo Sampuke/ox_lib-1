@@ -38,6 +38,7 @@ const useStyles = createStyles((theme) => ({
   titleText: {
     color: theme.colors.dark[0],
     padding: 6,
+    paddingTop: "14px",
     textAlign: 'left',
   },
   titleBox: {

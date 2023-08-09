@@ -13,6 +13,7 @@ interface Props {
 const TextareaField: React.FC<Props> = (props) => {
   return (
     <Textarea
+    radius="xs"
       {...props.register}
       defaultValue={props.row.default}
       label={props.row.label}

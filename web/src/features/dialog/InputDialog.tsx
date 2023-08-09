@@ -100,8 +100,10 @@ const InputDialog: React.FC = () => {
         title={fields.heading}
         withCloseButton={false}
         overlayOpacity={0.5}
-        transition="fade"
-        exitTransitionDuration={150}
+        overlayBlur={2}
+        exitTransitionDuration={600}
+        transition="fade"radius="xs"
+        transitionTimingFunction='ease-in-out'
       >
         <form onSubmit={onSubmit}>
           <Stack>

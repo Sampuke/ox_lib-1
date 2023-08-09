@@ -21,6 +21,7 @@ const SelectField: React.FC<Props> = (props) => {
     <>
       {props.row.type === 'select' ? (
         <Select
+        radius="xs"
           data={props.row.options}
           value={controller.field.value}
           name={controller.field.name}

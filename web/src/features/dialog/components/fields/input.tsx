@@ -23,6 +23,7 @@ const InputField: React.FC<Props> = (props) => {
     <>
       {!props.row.password ? (
         <TextInput
+        radius="xs"
           {...props.register}
           defaultValue={props.row.default}
           label={props.row.label}
