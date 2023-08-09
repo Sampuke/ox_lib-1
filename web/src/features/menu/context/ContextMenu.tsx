@@ -31,8 +31,9 @@ const useStyles = createStyles((theme) => ({
   titleContainer: {
     flex: '1 100%',
     flexDirection: "row",
-
-    backgroundColor: theme.colors.dark[6],
+    opacity: "98%",
+    backgroundColor: "#232324",
+    paddingBottom: "10px",
   },
   titleText: {
     color: theme.colors.dark[0],
@@ -95,16 +96,15 @@ const ContextMenu: React.FC = () => {
     <Box className={classes.container}>
       <ScaleFade visible={visible}>
         <Flex className={classes.header}>
-
-        <Box className={classes.titleContainer}>
-          <Text className={classes.titleText}>
-            <ReactMarkdown>{contextMenu.title}</ReactMarkdown>
-          </Text>
-        </Box>
-        {contextMenu.menu && (
-          <HeaderButton icon="chevron-left" iconSize={16} handleClick={() => openMenu(contextMenu.menu)} />
-        )}
-        <HeaderButton icon="xmark" canClose={contextMenu.canClose} iconSize={18} handleClick={closeContext} />
+          <Box className={classes.titleContainer}>
+            <Text className={classes.titleText}>
+              <ReactMarkdown>{contextMenu.title}</ReactMarkdown>
+            </Text>
+          </Box>
+          {contextMenu.menu && (
+            <HeaderButton icon="arrow-left" iconSize={16} handleClick={() => openMenu(contextMenu.menu)} />
+          )}
+          <HeaderButton icon="xmark" canClose={contextMenu.canClose} iconSize={18} handleClick={closeContext} />
         </Flex>
         <Box className={classes.buttonsContainer}>
           <Stack className={classes.buttonsFlexWrapper}>

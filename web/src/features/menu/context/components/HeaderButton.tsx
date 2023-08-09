@@ -11,7 +11,7 @@ interface Props {
 
 const useStyles = createStyles((theme, params: { canClose?: boolean }) => ({
   button: {
-    borderRadius: 4,
+    borderRadius: 0,
     flex: '1 15%',
     alignSelf: 'stretch',
     height: 'auto',

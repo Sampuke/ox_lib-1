@@ -28,6 +28,7 @@ const useStyles = createStyles((theme, params: { disabled?: boolean }) => ({
     height: 'fit-content',
     width: '100%',
     padding: 10,
+    opacity: "98%",
     border: "solid rgba(251, 251, 251, 0.76) 1px",
     // borderRight: "solid white rgba(251, 251, 251, 0.76)",
     // borderBottom: "solid white rgba(251, 251, 251, 0.76)"
