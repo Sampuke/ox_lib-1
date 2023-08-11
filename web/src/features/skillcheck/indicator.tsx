@@ -14,7 +14,7 @@ interface Props {
 
 const Indicator: React.FC<Props> = ({ angle, offset, multiplier, handleComplete, skillCheck, className }) => {
   const [indicatorAngle, setIndicatorAngle] = useState(-90);
-  const [keyPressed, setKeyPressed] = useState<false | string>(false);
+  const [keyPressed, setKeyPressed] = useState(false);
   const interval = useInterval(
     () =>
       setIndicatorAngle((prevState) => {
@@ -25,7 +25,8 @@ const Indicator: React.FC<Props> = ({ angle, offset, multiplier, handleComplete,
 
   const keyHandler = useCallback(
     (e: KeyboardEvent) => {
-      setKeyPressed(e.key.toLowerCase());
+      if (e.key.toLowerCase() !== skillCheck.key.toLowerCase()) return;
+      setKeyPressed(true);
     },
     [skillCheck]
   );
@@ -48,22 +49,20 @@ const Indicator: React.FC<Props> = ({ angle, offset, multiplier, handleComplete,
 
     interval.stop();
 
+    setKeyPressed(false);
     window.removeEventListener('keydown', keyHandler);
 
-    if (keyPressed !== skillCheck.key.toLowerCase() || indicatorAngle < angle || indicatorAngle > angle + offset)
-      handleComplete(false);
+    if (indicatorAngle < angle || indicatorAngle > angle + offset) handleComplete(false);
     else handleComplete(true);
-
-    setKeyPressed(false);
   }, [keyPressed]);
 
   return (
     <circle
-      r={50}
+      r={90}
       cx={250}
       cy={250}
       strokeDasharray={circleCircumference}
-      strokeDashoffset={circleCircumference - 3}
+      strokeDashoffset={circleCircumference - 7}
       transform={`rotate(${indicatorAngle}, 250, 250)`}
       className={className}
     />

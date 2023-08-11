@@ -8,7 +8,7 @@ export const debugInput = () => {
       data: {
         heading: 'Police locker',
         options: {
-          allowCancel: false,
+          allowCancel: true,
         },
         rows: [
           {

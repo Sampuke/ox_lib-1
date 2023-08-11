@@ -10,20 +10,19 @@ const useStyles = createStyles((theme) => ({
   container: {
     width: 300,
     height: 'fit-content',
-    backgroundColor: theme.colors.dark[6],
     color: theme.colors.dark[0],
     padding: 12,
-    borderRadius: theme.radius.sm,
+    borderRadius: theme.radius.xs,
     fontFamily: 'Roboto',
     boxShadow: theme.shadows.sm,
   },
   title: {
-    fontWeight: 500,
+    fontWeight: 700,
     lineHeight: 'normal',
   },
   description: {
     fontSize: 12,
-    color: theme.colors.dark[2],
+    fontWeight: 700,
     fontFamily: 'Roboto',
     lineHeight: 'normal',
   },
@@ -152,29 +151,33 @@ const Notifications: React.FC = () => {
                 } 0.4s ease-in forwards`,
             ...data.style,
           }}
+          style={{backgroundColor: data.type === 'error' ? 'rgb(104, 3, 3)' : data.type === 'success' ? 'rgb(49, 101, 165)' : data.type === 'warning' ? 'rgb(151, 157, 0)' : 'rgb(33, 52, 163)' }}
+
           className={`${classes.container}`}
         >
-          <Group noWrap spacing={12}>
+          <Group 
+                    style={{backgroundColor: "rgba(0,0,0, 0.0"}} noWrap spacing={12}>
             {data.icon && (
               <>
                 {!data.iconColor ? (
                   <Avatar
-                    color={
-                      data.type === 'error'
-                        ? 'red'
-                        : data.type === 'success'
-                        ? 'teal'
-                        : data.type === 'warning'
-                        ? 'yellow'
-                        : 'blue'
-                    }
-                    radius="xl"
+                    // color={
+                    //   data.type === 'error'
+                    //     ? 'red'
+                    //     : data.type === 'success'
+                    //     ? 'teal'
+                    //     : data.type === 'warning'
+                    //     ? 'yellow'
+                    //     : 'blue'
+                    // }
+                    radius="xs"
+                    style={{backgroundColor: "rgba(0,0,0, 0.0"}}
                     size={32}
                   >
                     <FontAwesomeIcon icon={data.icon} fixedWidth size="lg" />
                   </Avatar>
                 ) : (
-                  <FontAwesomeIcon icon={data.icon} style={{ color: data.iconColor }} fixedWidth size="lg" />
+                  <FontAwesomeIcon icon={data.icon} style={{backgroundColor: "rgba(0,0,0, 0.0", color: data.iconColor }} fixedWidth size="lg" />
                 )}
               </>
             )}

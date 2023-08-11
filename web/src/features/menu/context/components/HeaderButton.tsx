@@ -19,6 +19,8 @@ const useStyles = createStyles((theme, params: { canClose?: boolean }) => ({
     justifyContent: 'center',
     padding: 2,
     // marginBottom: "10px"
+    opacity: "98%",
+    backgroundColor: "#232324",
   },
   root: {
     border: 'none',

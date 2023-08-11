@@ -29,7 +29,6 @@ const useStyles = createStyles((theme, params: { position?: TextUiPosition }) =>
     fontFamily: 'Roboto',
     boxShadow: theme.shadows.sm,
     fontWeight: 500,
-    fontFamily: 'Kanit',
   },
 }));
 
@@ -55,7 +54,7 @@ const TextUI: React.FC = () => {
         <ScaleFade visible={visible}>
           <Box style={data.style} className={classes.container}>
             <Group spacing={12}>
-              {data.icon && <FontAwesomeIcon icon={data.icon} fixedWidth size="lg" style={{ color: data.iconColor }} />}
+              {data.icon && <FontAwesomeIcon icon={data.icon} fixedWidth size="lg" style={{ color: "#3066a0" }} />}
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{data.text}</ReactMarkdown>
             </Group>
           </Box>

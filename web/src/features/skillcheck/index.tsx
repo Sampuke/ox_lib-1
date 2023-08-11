@@ -5,14 +5,14 @@ import { fetchNui } from '../../utils/fetchNui';
 import { Box, createStyles } from '@mantine/core';
 import type { SkillCheckProps, GameDifficulty } from '../../typings';
 
-export const circleCircumference = 2 * 50 * Math.PI;
+export const circleCircumference = 3 * 90 * Math.PI;
 
 const getRandomAngle = (min: number, max: number) => Math.floor(Math.random() * (max - min)) + min;
 
 const difficultyOffsets = {
-  easy: 50,
-  medium: 40,
-  hard: 25,
+  easy: 40,
+  medium: 35,
+  hard: 30,
 };
 
 const useStyles = createStyles((theme) => ({
@@ -24,17 +24,19 @@ const useStyles = createStyles((theme) => ({
   },
   track: {
     fill: 'transparent',
-    stroke: theme.colors.dark[5],
-    strokeWidth: 8,
+    stroke: "#232324",
+    strokeOpacity: 0.92,
+    strokeWidth: 15,
+
   },
   skillArea: {
     fill: 'transparent',
     stroke: theme.fn.primaryColor(),
-    strokeWidth: 8,
+    strokeWidth: 14,
   },
   indicator: {
-    stroke: 'red',
-    strokeWidth: 16,
+    stroke: '#fff',
+    strokeWidth: 25,
     fill: 'transparent',
   },
   button: {
@@ -42,13 +44,11 @@ const useStyles = createStyles((theme) => ({
     left: '50%',
     top: '50%',
     transform: 'translate(-50%, -50%)',
-    backgroundColor: theme.colors.dark[5],
-    width: 25,
-    height: 25,
+    color: "#fff",
+    fontFamily: "Oswald",
     textAlign: 'center',
-    borderRadius: 5,
-    fontSize: 16,
-    fontWeight: 500,
+    fontSize: 50,
+    fontWeight: 400,
   },
 }));
 
@@ -71,7 +71,7 @@ const SkillCheck: React.FC = () => {
     const offset = typeof gameData === 'object' ? gameData.areaSize : difficultyOffsets[gameData];
     const randomKey = data.inputs ? data.inputs[Math.floor(Math.random() * data.inputs.length)] : 'e';
     setSkillCheck({
-      angle: -90 + getRandomAngle(120, 360 - offset),
+      angle: -90 + getRandomAngle(90, 360 - offset),
       difficultyOffset: offset,
       difficulty: gameData,
       key: randomKey,
@@ -99,7 +99,7 @@ const SkillCheck: React.FC = () => {
       : 'e';
     const offset = typeof data === 'object' ? data.areaSize : difficultyOffsets[data];
     setSkillCheck({
-      angle: -90 + getRandomAngle(120, 360 - offset),
+      angle: -90 + getRandomAngle(90, 360 - offset),
       difficultyOffset: offset,
       difficulty: data,
       key,
@@ -110,12 +110,12 @@ const SkillCheck: React.FC = () => {
     <>
       {visible && (
         <>
-          <svg r={50} width={500} height={500} className={classes.svg}>
+          <svg r={90} width={500} height={500} className={classes.svg}>
             {/*Circle track*/}
-            <circle r={50} cx={250} cy={250} className={classes.track} strokeDasharray={circleCircumference} />
+            <circle r={90} cx={250} cy={250} className={classes.track} strokeDasharray={circleCircumference} />
             {/*SkillCheck area*/}
             <circle
-              r={50}
+              r={90}
               cx={250}
               cy={250}
               strokeDasharray={circleCircumference}
@@ -128,11 +128,11 @@ const SkillCheck: React.FC = () => {
               offset={skillCheck.difficultyOffset}
               multiplier={
                 skillCheck.difficulty === 'easy'
-                  ? 1
+                  ? 0.7
                   : skillCheck.difficulty === 'medium'
-                  ? 1.5
+                  ? 0.90
                   : skillCheck.difficulty === 'hard'
-                  ? 1.75
+                  ? 0.95
                   : skillCheck.difficulty.speedMultiplier
               }
               handleComplete={handleComplete}

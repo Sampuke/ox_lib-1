@@ -29,6 +29,7 @@ const useStyles = createStyles((theme, params: { disabled?: boolean }) => ({
     width: '100%',
     padding: 10,
     opacity: "98%",
+    backgroundColor: "#232324",
     border: "solid rgba(251, 251, 251, 0.76) 1px",
     // borderRight: "solid white rgba(251, 251, 251, 0.76)",
     // borderBottom: "solid white rgba(251, 251, 251, 0.76)"
@@ -41,6 +42,8 @@ const useStyles = createStyles((theme, params: { disabled?: boolean }) => ({
     fontSize: 12,
   },
   dropdown: {
+    opacity: "98%",
+    backgroundColor: "#232324",
     padding: 10,
     color: theme.colors.dark[0],
     fontSize: 14,
@@ -145,7 +148,7 @@ const ContextButton: React.FC<{
                   </Text>
 
                   {typeof metadata === 'object' && metadata.progress !== undefined && (
-                    <Progress value={metadata.progress} size="sm" color={button.colorScheme || 'dark.3'} />
+                    <Progress value={metadata.progress} radius="xs" size="sm" color="#3066a0"/>
                   )}
                 </>
               )

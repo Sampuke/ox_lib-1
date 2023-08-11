@@ -7,15 +7,16 @@ import type { ProgressbarProps } from '../../typings';
 
 const useStyles = createStyles((theme) => ({
   container: {
-    width: 350,
-    height: 45,
-    borderRadius: theme.radius.sm,
-    backgroundColor: theme.colors.dark[5],
+    width: 550,
+    height: 9,
+    backgroundColor: "#232324",
+    opacity: "92%",
+    borderRadius: theme.radius.xs,
     overflow: 'hidden',
   },
   wrapper: {
     width: '100%',
-    height: '20%',
+    height: '30%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -24,24 +25,44 @@ const useStyles = createStyles((theme) => ({
   },
   bar: {
     height: '100%',
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
     backgroundColor: theme.colors[theme.primaryColor][theme.fn.primaryShade()],
   },
   labelWrapper: {
     position: 'absolute',
     display: 'flex',
-    width: 350,
+    width: 550,
     height: 45,
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: -28,
+    alignItems: 'left',
+    justifyContent: 'left',
   },
   label: {
-    maxWidth: 350,
-    padding: 8,
+    maxWidth: 550,
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
-    fontSize: 20,
-    color: theme.colors.gray[3],
+    fontSize: 18,
+    color: "#fff",
+    textShadow: theme.shadows.sm,
+  },
+  progressWrapper: {
+    position: 'absolute',
+    display: 'flex',
+    width: 550,
+    height: 45,
+    marginTop: -28,
+    alignItems: 'right',
+    justifyContent: 'right',
+  },
+  progress: {
+    maxWidth: 550,
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    fontSize: 18,
+    color: "#fff",
     textShadow: theme.shadows.sm,
   },
 }));
@@ -51,13 +72,26 @@ const Progressbar: React.FC = () => {
   const [visible, setVisible] = React.useState(false);
   const [label, setLabel] = React.useState('');
   const [duration, setDuration] = React.useState(0);
+  const [value, setValue] = React.useState(0);
 
-  useNuiEvent('progressCancel', () => setVisible(false));
+  useNuiEvent('progressCancel', () => {
+    setValue(99);
+    setVisible(false);
+  });
 
   useNuiEvent<ProgressbarProps>('progress', (data) => {
     setVisible(true);
+    setValue(0);
     setLabel(data.label);
     setDuration(data.duration);
+    const onePercent = data.duration * 0.01;
+    const updateProgress = setInterval(() => {
+      setValue((previousValue) => {
+        const newValue = previousValue + 1;
+        newValue >= 100 && clearInterval(updateProgress);
+        return newValue;
+      });
+    }, onePercent);
   });
 
   return (
@@ -75,6 +109,9 @@ const Progressbar: React.FC = () => {
             >
               <Box className={classes.labelWrapper}>
                 <Text className={classes.label}>{label}</Text>
+              </Box>
+              <Box className={classes.progressWrapper}>
+                <Text className={classes.progress}>{value}%</Text>
               </Box>
             </Box>
           </Box>
